@@ -5,23 +5,56 @@ using UnityEngine;
 
 public class pizzaBox : MonoBehaviour
 {
+
+    public GameObject prefabToSpawn;
+    public GameObject spawnedObject;
+    private bool hasSpawned = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnMouseOver()
     {
-        GameObject obj = GameObject.Find("Summary");
-        TMP_Text txt = obj.GetComponent<TMP_Text>();
-        txt.text = "hello";
+        if (!hasSpawned) 
+        {
+            SpawnObject();
+            hasSpawned = true;
+        }
+         
+    }
 
+
+    void OnMouseExit()
+    {
+        if (spawnedObject != null)
+        {
+            Destroy(spawnedObject);
+            spawnedObject = null;
+            hasSpawned = false;
+        }
+    }
+
+    void SpawnObject()
+    {
+        Debug.Log(prefabToSpawn);
+        if (prefabToSpawn != null)
+        {
+            Vector3 spawnPosition = new Vector3(2.5f, 1f, 0.2f);
+            spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+
+            Vector3 newScale = new Vector3(10f, 10f, 10f);
+            spawnedObject.transform.localScale = newScale;
+            spawnedObject.transform.Rotate(-20, 0, 0, Space.Self);
+            spawnedObject.transform.Rotate(0, 180, 0, Space.Self);
+
+        }
     }
 }
