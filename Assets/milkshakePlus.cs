@@ -21,4 +21,15 @@ public class milkshakePlus : MonoBehaviour
         milkshakeBox.currentPrice += 0.5;
         summaryBox.updatePrice();
     }
+
+    void OnMouseOver()
+    {
+        GetComponent<Renderer>().material.color = new Color(0.9f, 0.8f, 0.6f, 1f);
+    }
+
+
+    void OnMouseExit()
+    {
+        GetComponent<Renderer>().material.color = Color.white;
+    }
 }

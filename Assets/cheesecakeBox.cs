@@ -22,7 +22,7 @@ public class cheesecakeBox : MonoBehaviour
 
     void OnMouseOver()
     {
-
+        GetComponent<Renderer>().material.color = new Color(0.9f, 0.8f, 0.6f, 1f);
         if (!hasSpawned)
         {
             SpawnObject();
@@ -34,6 +34,7 @@ public class cheesecakeBox : MonoBehaviour
 
     void OnMouseExit()
     {
+        GetComponent<Renderer>().material.color = Color.white;
         if (spawnedObject != null)
         {
             Destroy(spawnedObject);
