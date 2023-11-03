@@ -781,7 +781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hotdog 1 \npizza 2"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1136,6 +1136,7 @@ GameObject:
   - component: {fileID: 593789231}
   - component: {fileID: 593789230}
   - component: {fileID: 593789229}
+  - component: {fileID: 593789233}
   m_Layer: 0
   m_Name: Summary Cube
   m_TagString: Untagged
@@ -1217,6 +1218,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &593789233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593789228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c145afb29ff76643b982c5115c51f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &632689328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,6 +2685,7 @@ GameObject:
   - component: {fileID: 1399714147}
   - component: {fileID: 1399714146}
   - component: {fileID: 1399714145}
+  - component: {fileID: 1399714149}
   m_Layer: 0
   m_Name: Pizza Plus
   m_TagString: Untagged
@@ -2754,6 +2768,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1399714149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399714144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51a254bed11ae34580236a24002e0f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1464419743
 GameObject:
   m_ObjectHideFlags: 0
