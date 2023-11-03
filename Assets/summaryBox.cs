@@ -22,8 +22,24 @@ public class summaryBox : MonoBehaviour
         string str = "";
         if(pizzaBox.currentPrice > 0.0)
         {
-            str += $"pizza : {pizzaBox.currentPrice}";
+            str += $"\npizza : {pizzaBox.currentPrice}";
         }
+        
+        if(cheesecakeBox.currentPrice > 0.0)
+        {
+            str += $"\ncheese cake : {cheesecakeBox.currentPrice}";
+        }
+        
+        if(hotdogBox.currentPrice > 0.0)
+        {
+            str += $"\nhotdog : {hotdogBox.currentPrice}";
+        }
+        
+        if(milkshakeBox.currentPrice > 0.0)
+        {
+            str += $"\nmilkshake : {milkshakeBox.currentPrice}";
+        }
+
 
         obj.text = str;
     }

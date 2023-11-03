@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class cheesecakeBox : MonoBehaviour
 {
-    
+    static public double currentPrice = 0.0;
     public GameObject prefabToSpawn;
     public GameObject spawnedObject;
     private bool hasSpawned = false;
@@ -49,6 +49,12 @@ public class cheesecakeBox : MonoBehaviour
         {
             Vector3 spawnPosition = new Vector3(2.5f, 1f, 0.2f);
             spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+
+            if (spawnedObject.GetComponent<Rigidbody>() != null)
+            {
+                spawnedObject.GetComponent<Rigidbody>().useGravity = false;
+                spawnedObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
 
             Vector3 newScale = new Vector3(10f, 10f, 10f);
             spawnedObject.transform.localScale = newScale;

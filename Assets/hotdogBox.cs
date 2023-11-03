@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class hotdogBox : MonoBehaviour
 {
+    static public double currentPrice = 0.0;
     public GameObject prefabToSpawn;
     public GameObject spawnedObject;
     private bool hasSpawned = false;

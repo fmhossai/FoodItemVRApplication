@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class milkshakeBox : MonoBehaviour
 {
+    static public double currentPrice = 0.0;
     public GameObject prefabToSpawn;
     public GameObject spawnedObject;
     private bool hasSpawned = false;
@@ -33,6 +34,7 @@ public class milkshakeBox : MonoBehaviour
 
     void OnMouseExit()
     {
+        
         if (spawnedObject != null)
         {
             Destroy(spawnedObject);

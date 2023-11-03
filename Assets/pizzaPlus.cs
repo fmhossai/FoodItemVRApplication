@@ -17,7 +17,7 @@ public class pizzaPlus : MonoBehaviour
     }
     void OnMouseDown()
    {
-        pizzaBox.currentPrice += 1.99f;
+        pizzaBox.currentPrice+= 1.99;
         summaryBox.updatePrice();
    }
 }
