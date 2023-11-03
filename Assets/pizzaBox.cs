@@ -6,6 +6,7 @@ using UnityEngine;
 public class pizzaBox : MonoBehaviour
 {
 
+    static public float currentPrice = 0.0f; 
     public GameObject prefabToSpawn;
     public GameObject spawnedObject;
     private bool hasSpawned = false;
