@@ -18,7 +18,7 @@ public class pizzaMinus : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (pizzaBox.currentPrice > 0)
+        if (pizzaBox.currentPrice > 0.0)
         {
                 pizzaBox.currentPrice -= 1.99;
                 summaryBox.updatePrice();

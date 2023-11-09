@@ -18,7 +18,10 @@ public class cheesecakeMinus : MonoBehaviour
 
     void OnMouseDown()
     {
-        cheesecakeBox.currentPrice -= 2.99;
+        if (cheesecakeBox.currentPrice > 0.0)
+        {
+            cheesecakeBox.currentPrice -= 2.99;
+        }
         summaryBox.updatePrice();
     }
 

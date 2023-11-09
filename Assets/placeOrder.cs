@@ -25,4 +25,13 @@ public class placeOrder : MonoBehaviour
     {
         GetComponent<Renderer>().material.color = Color.white;
     }
+    private void OnMouseDown()
+    {
+        pizzaBox.currentPrice = 0.0f;
+        cheesecakeBox.currentPrice = 0.0f;
+        hotdogBox.currentPrice = 0.0f;
+        milkshakeBox.currentPrice = 0.0f;
+        summaryBox.updatePrice();
+        orderPlaced.Show();
+    }
 }

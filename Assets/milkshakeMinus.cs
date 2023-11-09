@@ -18,7 +18,10 @@ public class milkshakeMinus : MonoBehaviour
 
     void OnMouseDown()
     {
-        milkshakeBox.currentPrice -= 0.5;
+        if(milkshakeBox.currentPrice > 0.0)
+        {
+            milkshakeBox.currentPrice -= 0.5;
+        }
         summaryBox.updatePrice();
     }
 

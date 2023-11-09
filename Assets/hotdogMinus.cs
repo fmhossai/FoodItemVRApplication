@@ -18,7 +18,11 @@ public class hotdogMinus : MonoBehaviour
 
     void OnMouseDown()
     {
-        hotdogBox.currentPrice -= 0.99;
+        if(hotdogBox.currentPrice > 0.0)
+        {
+            hotdogBox.currentPrice -= 0.99;
+
+        }
         summaryBox.updatePrice();
     }
 
