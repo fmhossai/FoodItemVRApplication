@@ -27,11 +27,13 @@ public class placeOrder : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        orderPlaced.txt.text = "Order Placed!\n" + summaryBox.obj.text;
         pizzaBox.currentPrice = 0.0f;
         cheesecakeBox.currentPrice = 0.0f;
         hotdogBox.currentPrice = 0.0f;
         milkshakeBox.currentPrice = 0.0f;
         summaryBox.updatePrice();
         orderPlaced.Show();
+        closeButton.Show();
     }
 }
