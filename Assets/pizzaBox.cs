@@ -60,4 +60,24 @@ public class pizzaBox : MonoBehaviour
 
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GetComponent<Renderer>().material.color = new Color(0.9f, 0.8f, 0.6f, 1f);
+        if (!hasSpawned)
+        {
+            SpawnObject();
+            hasSpawned = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        GetComponent<Renderer>().material.color = Color.white;
+        if (spawnedObject != null)
+        {
+            Destroy(spawnedObject);
+            spawnedObject = null;
+            hasSpawned = false;
+        }
+    }
 }

@@ -35,4 +35,21 @@ public class milkshakeMinus : MonoBehaviour
     {
         GetComponent<Renderer>().material.color = Color.white;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GetComponent<Renderer>().material.color = new Color(0.9f, 0.8f, 0.6f, 1f);
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        GetComponent<Renderer>().material.color = Color.white;
+    }
+    public static void OnClick()
+    {
+        if (milkshakeBox.currentPrice > 0.0)
+        {
+            milkshakeBox.currentPrice -= 0.5;
+        }
+        summaryBox.updatePrice();
+    }
 }
