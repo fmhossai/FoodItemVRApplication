@@ -27,12 +27,7 @@ public class placeOrder : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        pizzaBox.currentPrice = 0.0f;
-        cheesecakeBox.currentPrice = 0.0f;
-        hotdogBox.currentPrice = 0.0f;
-        milkshakeBox.currentPrice = 0.0f;
-        summaryBox.updatePrice();
-        orderPlaced.Show();
+        OnClick();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,5 +37,16 @@ public class placeOrder : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         GetComponent<Renderer>().material.color = Color.white;
+    }
+    public static void OnClick()
+    {
+        orderPlaced.txt.text = "Order Placed!\n" + summaryBox.obj.text;
+        pizzaBox.currentPrice = 0.0f;
+        cheesecakeBox.currentPrice = 0.0f;
+        hotdogBox.currentPrice = 0.0f;
+        milkshakeBox.currentPrice = 0.0f;
+        summaryBox.updatePrice();
+        orderPlaced.Show();
+        closeButton.Show();
     }
 }

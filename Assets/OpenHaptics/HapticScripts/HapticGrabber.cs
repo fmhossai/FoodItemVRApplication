@@ -7,24 +7,24 @@ using UnityEngine;
 //! This object can be applied to the stylus of a haptic device. 
 //! It allows you to pick up simulated objects and feel the involved physics.
 //! Optionally, it can also turn off physics interaction when nothing is being held.
-public class HapticGrabber : MonoBehaviour 
+public class HapticGrabber : MonoBehaviour
 {
-	public int buttonID = 0;		//!< index of the button assigned to grabbing.  Defaults to the first button
-	public bool ButtonActsAsToggle = false;	//!< Toggle button? as opposed to a press-and-hold setup?  Defaults to off.
-	public enum PhysicsToggleStyle{ none, onTouch, onGrab };
+	public int buttonID = 0;        //!< index of the button assigned to grabbing.  Defaults to the first button
+	public bool ButtonActsAsToggle = false; //!< Toggle button? as opposed to a press-and-hold setup?  Defaults to off.
+	public enum PhysicsToggleStyle { none, onTouch, onGrab };
 	public PhysicsToggleStyle physicsToggleStyle = PhysicsToggleStyle.none;   //!< Should the grabber script toggle the physics forces on the stylus? 
 
 	public bool DisableUnityCollisionsWithTouchableObjects = true;
 
-	private  GameObject hapticDevice = null;   //!< Reference to the GameObject representing the Haptic Device
-	private bool buttonStatus = false;			//!< Is the button currently pressed?
-	private GameObject touching = null;			//!< Reference to the object currently touched
-	private GameObject grabbing = null;			//!< Reference to the object currently grabbed
-	private FixedJoint joint = null;			//!< The Unity physics joint created between the stylus and the object being grabbed.
+	private GameObject hapticDevice = null;   //!< Reference to the GameObject representing the Haptic Device
+	private bool buttonStatus = false;          //!< Is the button currently pressed?
+	private GameObject touching = null;         //!< Reference to the object currently touched
+	private GameObject grabbing = null;         //!< Reference to the object currently grabbed
+	private FixedJoint joint = null;            //!< The Unity physics joint created between the stylus and the object being grabbed.
 
 
 	//! Automatically called for initialization
-	void Start () 
+	void Start()
 	{
 		if (hapticDevice == null)
 		{
@@ -40,11 +40,11 @@ public class HapticGrabber : MonoBehaviour
 
 		}
 
-		if ( physicsToggleStyle != PhysicsToggleStyle.none)
+		if (physicsToggleStyle != PhysicsToggleStyle.none)
 			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = false;
 
 		if (DisableUnityCollisionsWithTouchableObjects)
-        {
+		{
 			//disableUnityCollisions();
 		}
 	}
@@ -52,7 +52,7 @@ public class HapticGrabber : MonoBehaviour
 	void disableUnityCollisions()
 	{
 		GameObject[] touchableObjects;
-		touchableObjects =  GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];  //FIXME  Does this fail gracefully?
+		touchableObjects = GameObject.FindGameObjectsWithTag("Touchable") as GameObject[];  //FIXME  Does this fail gracefully?
 
 		// Ignore my collider
 		Collider myC = gameObject.GetComponent<Collider>();
@@ -63,7 +63,7 @@ public class HapticGrabber : MonoBehaviour
 				if (CT != null)
 					Physics.IgnoreCollision(myC, CT);
 			}
-		
+
 		// Ignore colliders in children.
 		Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
 		foreach (Collider C in colliders)
@@ -76,12 +76,12 @@ public class HapticGrabber : MonoBehaviour
 
 	}
 
-	
+
 	//! Update is called once per frame
-	void FixedUpdate () 
+	void FixedUpdate()
 	{
-		
-		bool newButtonStatus = hapticDevice.GetComponent<HapticPlugin>().Buttons [buttonID] == 1;
+
+		bool newButtonStatus = hapticDevice.GetComponent<HapticPlugin>().Buttons[buttonID] == 1;
 		bool oldButtonStatus = buttonStatus;
 		buttonStatus = newButtonStatus;
 
@@ -95,7 +95,8 @@ public class HapticGrabber : MonoBehaviour
 					release();
 				else
 					grab();
-			} else
+			}
+			else
 			{
 				grab();
 			}
@@ -106,14 +107,15 @@ public class HapticGrabber : MonoBehaviour
 			if (ButtonActsAsToggle)
 			{
 				//Do Nothing
-			} else
+			}
+			else
 			{
 				release();
 			}
 		}
 
 		// Make sure haptics is ON if we're grabbing
-		if( grabbing && physicsToggleStyle != PhysicsToggleStyle.none)
+		if (grabbing && physicsToggleStyle != PhysicsToggleStyle.none)
 			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = true;
 		if (!grabbing && physicsToggleStyle == PhysicsToggleStyle.onGrab)
 			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = false;
@@ -124,26 +126,26 @@ public class HapticGrabber : MonoBehaviour
 		else
 			hapticDevice.GetComponent<HapticPlugin>().shapesEnabled = true;
 			*/
-			
+
 	}
 
-	private void hapticTouchEvent( bool isTouch )
+	private void hapticTouchEvent(bool isTouch)
 	{
 		Debug.Log("collide");
 		if (physicsToggleStyle == PhysicsToggleStyle.onGrab)
 		{
 			if (isTouch)
-            {
+			{
 				hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = true;
 
 			}
-            else
-            {
+			else
+			{
 				return; // Don't release haptics while we're holding something.
-			}			
+			}
 		}
-			
-		if( physicsToggleStyle == PhysicsToggleStyle.onTouch )
+
+		if (physicsToggleStyle == PhysicsToggleStyle.onTouch)
 		{
 			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = isTouch;
 			GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
@@ -152,7 +154,7 @@ public class HapticGrabber : MonoBehaviour
 		}
 	}
 
-    void OnCollisionEnter(Collision collisionInfo)
+	void OnCollisionEnter(Collision collisionInfo)
 	{
 		Collider other = collisionInfo.collider;
 		//Debug.unityLogger.Log("OnCollisionEnter : " + other.name);
@@ -173,7 +175,7 @@ public class HapticGrabber : MonoBehaviour
 			thatBody = that.GetComponent<Rigidbody>();
 		}
 
-		if( collisionInfo.rigidbody != null )
+		if (collisionInfo.rigidbody != null)
 			hapticTouchEvent(true);
 
 		if (thatBody == null)
@@ -181,7 +183,7 @@ public class HapticGrabber : MonoBehaviour
 
 		if (thatBody.isKinematic)
 			return;
-	
+
 		touching = that;
 	}
 	void OnCollisionExit(Collision collisionInfo)
@@ -189,22 +191,22 @@ public class HapticGrabber : MonoBehaviour
 		Collider other = collisionInfo.collider;
 		//Debug.unityLogger.Log("onCollisionrExit : " + other.name);
 
-		if( collisionInfo.rigidbody != null )
-			hapticTouchEvent( false );
+		if (collisionInfo.rigidbody != null)
+			hapticTouchEvent(false);
 
 		if (touching == null)
 			return; // Do nothing
 
 		if (other == null ||
-		    other.gameObject == null || other.gameObject.transform == null)
+			other.gameObject == null || other.gameObject.transform == null)
 			return; // Other has no transform? Then we couldn't have grabbed it.
 
-		if( touching == other.gameObject || other.gameObject.transform.IsChildOf(touching.transform))
+		if (touching == other.gameObject || other.gameObject.transform.IsChildOf(touching.transform))
 		{
 			touching = null;
 		}
 	}
-		
+
 	//! Begin grabbing an object. (Like closing a claw.) Normally called when the button is pressed. 
 	void grab()
 	{
@@ -224,13 +226,13 @@ public class HapticGrabber : MonoBehaviour
 		if (touchedObject.CompareTag("Gripper"))
 			return;
 
-		Debug.Log( " Object : " + touchedObject.name + "  Tag : " + touchedObject.tag );
+		Debug.Log(" Object : " + touchedObject.name + "  Tag : " + touchedObject.tag);
 
-		if(touchedObject.name == "Pizza Plus")
-        {
+		if (touchedObject.name == "Pizza Plus")
+		{
 			pizzaPlus.OnClick();
-        }
-		else if(touchedObject.name == "Pizza Minus")
+		}
+		else if (touchedObject.name == "Pizza Minus")
 
 		{
 			pizzaMinus.OnClick();
@@ -250,13 +252,22 @@ public class HapticGrabber : MonoBehaviour
 		else if (touchedObject.name == "Milkshake Minus")
 		{
 			milkshakeMinus.OnClick();
-		}else if (touchedObject.name == "Cheesecake Plus")
+		}
+		else if (touchedObject.name == "Cheesecake Plus")
 		{
 			cheesecakePlus.OnClick();
 		}
 		else if (touchedObject.name == "Cheesecake Minus")
 		{
 			cheesecakeMinus.OnClick();
+		}
+		else if (touchedObject.name == "Checkout Box")
+		{
+			placeOrder.OnClick();
+		}
+		else if (touchedObject.name == "Close Button")
+		{
+			closeButton.OnClick();
 		}
 
 		grabbing = touchedObject;
@@ -288,17 +299,17 @@ public class HapticGrabber : MonoBehaviour
 		joint.connectedBody = body;
 	}
 	//! changes the layer of an object, and every child of that object.
-	static void SetLayerRecursively(GameObject go, int layerNumber )
+	static void SetLayerRecursively(GameObject go, int layerNumber)
 	{
-		if( go == null ) return;
-		foreach(Transform trans in go.GetComponentsInChildren<Transform>(true))
+		if (go == null) return;
+		foreach (Transform trans in go.GetComponentsInChildren<Transform>(true))
 			trans.gameObject.layer = layerNumber;
 	}
 
 	//! Stop grabbing an obhject. (Like opening a claw.) Normally called when the button is released. 
 	void release()
 	{
-		if( grabbing == null ) //Nothing to release
+		if (grabbing == null) //Nothing to release
 			return;
 
 
@@ -313,7 +324,7 @@ public class HapticGrabber : MonoBehaviour
 
 		if (physicsToggleStyle != PhysicsToggleStyle.none)
 			hapticDevice.GetComponent<HapticPlugin>().PhysicsManipulationEnabled = false;
-			
+
 	}
 
 	//! Returns true if there is a current object. 
@@ -322,7 +333,8 @@ public class HapticGrabber : MonoBehaviour
 		return (grabbing != null);
 	}
 
-	public GameObject touchedObject(){
+	public GameObject touchedObject()
+	{
 		return touching;
 	}
 }

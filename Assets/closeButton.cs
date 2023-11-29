@@ -40,4 +40,18 @@ public class closeButton : MonoBehaviour
     {
         obj.SetActive(false);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        GetComponent<Renderer>().material.color = new Color(0.9f, 0.8f, 0.6f, 1f);
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        GetComponent<Renderer>().material.color = Color.white;
+    }
+    public static void OnClick()
+    {
+        orderPlaced.Hide();
+        obj.SetActive(false);
+        obj.GetComponent<Renderer>().material.color = Color.white;
+    }
 }
