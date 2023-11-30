@@ -48,10 +48,10 @@ public class milkshakeBox : MonoBehaviour
         Debug.Log(prefabToSpawn);
         if (prefabToSpawn != null)
         {
-            Vector3 spawnPosition = new Vector3(2.5f, 0.5f, 0.2f);
+            Vector3 spawnPosition = new Vector3(4f, -1f, 2f);
             spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
 
-            Vector3 newScale = new Vector3(5f, 5f, 5f);
+            Vector3 newScale = new Vector3(3f, 3f, 3f);
             spawnedObject.transform.localScale = newScale;
 
         }

@@ -50,10 +50,10 @@ public class pizzaBox : MonoBehaviour
         Debug.Log(prefabToSpawn);
         if (prefabToSpawn != null)
         {
-            Vector3 spawnPosition = new Vector3(2.5f, 1f, 0.2f);
+            Vector3 spawnPosition = new Vector3(4f, -0.5f, 2f);
             spawnedObject = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
 
-            Vector3 newScale = new Vector3(10f, 10f, 10f);
+            Vector3 newScale = new Vector3(5f, 5f, 5f);
             spawnedObject.transform.localScale = newScale;
             spawnedObject.transform.Rotate(-20, 0, 0, Space.Self);
             spawnedObject.transform.Rotate(0, 180, 0, Space.Self);
