@@ -262,7 +262,7 @@ MeshRenderer:
   m_GameObject: {fileID: 39574945}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -634,7 +634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113197791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4300001, y: -0.54, z: 0.442}
+  m_LocalPosition: {x: -1.48, y: -0.54, z: 0.442}
   m_LocalScale: {x: 2.1361635, y: 0.53404087, z: 0.53404087}
   m_Children:
   - {fileID: 814535980}
@@ -3384,7 +3384,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284356603}
   m_LocalRotation: {x: -0.000025876081, y: -0.0001132028, z: -0.00020042223, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.392}
+  m_LocalPosition: {x: 0, y: 0, z: 0.39}
   m_LocalScale: {x: 2.14994, y: 0.5374849, z: 0.5374849}
   m_Children:
   - {fileID: 720065305}
@@ -3393,7 +3393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -0.003, y: -0.013, z: -0.023000002}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.4099998, y: 0.32999998}
+  m_AnchoredPosition: {x: -1.48, y: 0.33}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1284356610
@@ -4466,7 +4466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595400290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4699998, y: -1.301, z: 0.482}
+  m_LocalPosition: {x: -1.48, y: -1.301, z: 0.482}
   m_LocalScale: {x: 2.0057008, y: 0.55486727, z: 0.76863635}
   m_Children:
   - {fileID: 1767672082}
