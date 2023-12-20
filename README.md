@@ -13,3 +13,9 @@ A Modern Food Item ordering VR Application for users to order food items from a 
 
 ## Development
 This project was created in Unity. The required version to use this project is 28f1. Simply clone this repo and open the corresponding folder using Unity Hub.
+
+### Main
+The main branch uses mouse clicks to interact with the application.
+
+### Haptic
+The haptic branch uses a 3D systems compatiable Haptic device to interact with the application
